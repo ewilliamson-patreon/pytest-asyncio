@@ -196,6 +196,7 @@ def _preprocess_async_fixtures(
             if fixturedef in processed_fixturedefs or not _is_coroutine_or_asyncgen(
                 func
             ):
+                processed_fixturedefs.add(fixturedef)
                 continue
             if not _is_asyncio_fixture_function(func) and asyncio_mode == Mode.STRICT:
                 # Ignore async fixtures without explicit asyncio mark in strict mode
